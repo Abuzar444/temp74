@@ -8,10 +8,6 @@ import {
 } from "@tanstack/react-query";
 
 async function JobDetailPage({ params }: { params: { id: string } }) {
-  return (
-    <HydrationBoundary>
-      <EditJobForm jobId={params.id} />
-    </HydrationBoundary>
-  );
+  return <EditJobForm jobId={params.id} />;
 }
 export default JobDetailPage;

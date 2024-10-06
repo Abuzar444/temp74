@@ -10,10 +10,10 @@ import {
 
 const Stats = async () => {
   return (
-    <HydrationBoundary>
+    <>
       <StatsContainer />
       <ChartsContainer />
-    </HydrationBoundary>
+    </>
   );
 };
 
