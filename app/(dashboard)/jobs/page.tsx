@@ -9,6 +9,10 @@ import {
 import { getAllJobsAction } from "@/utils/actions";
 const Jobs: React.FC = async () => {
   const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["jobs", "", "all", 1],
+    queryFn: () => getAllJobsAction({}),
+  });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <SearchForm />
