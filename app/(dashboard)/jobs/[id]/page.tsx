@@ -11,7 +11,7 @@ async function JobDetailPage({ params }: { params: { id: string } }) {
   const queryClient = new QueryClient();
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <HydrationBoundary>
       <EditJobForm jobId={params.id} />
     </HydrationBoundary>
   );

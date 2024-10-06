@@ -12,7 +12,7 @@ const Stats = async () => {
   const queryClient = new QueryClient();
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <HydrationBoundary>
       <StatsContainer />
       <ChartsContainer />
     </HydrationBoundary>
