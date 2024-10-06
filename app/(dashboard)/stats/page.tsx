@@ -20,10 +20,7 @@ const Stats = async () => {
     queryFn: () => getChartsDataAction(),
   });
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <StatsContainer />
-      <ChartsContainer />
-    </HydrationBoundary>
+    <HydrationBoundary state={dehydrate(queryClient)}>Helo</HydrationBoundary>
   );
 };
 
