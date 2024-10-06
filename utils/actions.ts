@@ -170,14 +170,12 @@ export const updateJobAction = async (
   }
 };
 
-export async function getStatsAction(): Promise<{
+export const getStatsAction = async (): Promise<{
   pending: number;
   interview: number;
   declined: number;
-}> {
+}> => {
   const userId = authenticateAndRedirect();
-  // just to show Skeleton
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
   try {
     const stats = await prisma.job.groupBy({
       by: ["status"],
@@ -185,7 +183,7 @@ export async function getStatsAction(): Promise<{
         status: true,
       },
       where: {
-        clerkId: userId, // replace userId with the actual clerkId
+        clerkId: userId,
       },
     });
     const statsObject = stats.reduce((acc, curr) => {
@@ -203,7 +201,7 @@ export async function getStatsAction(): Promise<{
   } catch (error) {
     redirect("/jobs");
   }
-}
+};
 
 export const getChartsDataAction = async (): Promise<
   Array<{ date: string; count: number }>

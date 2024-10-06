@@ -15,18 +15,18 @@ import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { getSingleJobAction, updateJobAction } from "@/utils/actions";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-const EditJobForm = () => {
+const EditJobForm = ({ jobId }: { jobId: string }) => {
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const router = useRouter();
   const { data } = useQuery({
-    queryKey: ["job", "jobId"],
-    queryFn: () => getSingleJobAction("jobId"),
+    queryKey: ["job", jobId],
+    queryFn: () => getSingleJobAction(jobId),
   });
 
   const { mutate, isPending } = useMutation({
     mutationFn: (values: CreateAndEditJobType) =>
-      updateJobAction("jobId", values),
+      updateJobAction(jobId, values),
     onSuccess: (data) => {
       if (!data) {
         toast({
@@ -36,7 +36,7 @@ const EditJobForm = () => {
       }
       toast({ description: "job updated" });
       queryClient.invalidateQueries({ queryKey: ["jobs"] });
-      queryClient.invalidateQueries({ queryKey: ["job", "jobId"] });
+      queryClient.invalidateQueries({ queryKey: ["job", jobId] });
       queryClient.invalidateQueries({ queryKey: ["stats"] });
       router.push("/jobs");
       form.reset();
