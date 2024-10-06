@@ -10,19 +10,11 @@ import {
 async function StatsPage() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: ["stats"],
-    queryFn: () => getStatsAction(),
-  });
-  await queryClient.prefetchQuery({
-    queryKey: ["charts"],
-    queryFn: () => getChartsDataAction(),
-  });
   return (
-    <>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <StatsContainer />
       <ChartsContainer />
-    </>
+    </HydrationBoundary>
   );
 }
 export default StatsPage;
