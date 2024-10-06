@@ -11,14 +11,8 @@ import {
 const Stats = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
-    queryKey: ["stats"],
-    queryFn: () => getStatsAction(),
-  });
-  await queryClient.prefetchQuery({
-    queryKey: ["charts"],
-    queryFn: () => getChartsDataAction(),
-  });
+  await queryClient.setQueryData(["stats"], () => getStatsAction());
+  await queryClient.setQueryData(["jobs"], () => getChartsDataAction());
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <StatsContainer />
