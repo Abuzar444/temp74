@@ -9,8 +9,6 @@ import {
 } from "@tanstack/react-query";
 
 const Stats = async () => {
-  const queryClient = new QueryClient();
-
   return (
     <HydrationBoundary>
       <StatsContainer />
