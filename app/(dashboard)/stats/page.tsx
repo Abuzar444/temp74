@@ -19,10 +19,10 @@ async function StatsPage() {
     queryFn: () => getChartsDataAction(),
   });
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
+    <>
       <StatsContainer />
       <ChartsContainer />
-    </HydrationBoundary>
+    </>
   );
 }
 export default StatsPage;
