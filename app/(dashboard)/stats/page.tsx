@@ -19,9 +19,7 @@ const Stats = async () => {
     queryKey: ["charts"],
     queryFn: () => getChartsDataAction(),
   });
-  return (
-    <HydrationBoundary state={dehydrate(queryClient)}>Helo</HydrationBoundary>
-  );
+  return <div>Hello</div>;
 };
 
 export default Stats;
