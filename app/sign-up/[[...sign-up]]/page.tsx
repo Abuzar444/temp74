@@ -1,9 +1,9 @@
-import { SignUp } from '@clerk/nextjs';
-import React from 'react';
+import { SignUp } from "@clerk/nextjs";
+import React from "react";
 
-const SingUpPage: React.FC = () => {
+const SingUpPage = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <div className='min-h-screen flex justify-center items-center'>
       <SignUp />;
     </div>
   );

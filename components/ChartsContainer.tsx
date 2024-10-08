@@ -1,5 +1,5 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 import {
   BarChart,
   Bar,
@@ -8,30 +8,30 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from 'recharts';
+} from "recharts";
 
-import { useQuery } from '@tanstack/react-query';
-import { getChartsDataAction } from '@/utils/actions';
-const ChartsContainer: React.FC = () => {
+import { useQuery } from "@tanstack/react-query";
+import { getChartsDataAction } from "@/utils/actions";
+const ChartsContainer = () => {
   const { data, isPending } = useQuery({
-    queryKey: ['charts'],
+    queryKey: ["charts"],
     queryFn: () => getChartsDataAction(),
   });
 
-  if (isPending) return <h2 className="text-xl font-medium">Please wait...</h2>;
+  if (isPending) return <h2 className='text-xl font-medium'>Please wait...</h2>;
   if (!data || data.length < 1) return null;
   return (
-    <section className="mt-16">
-      <h1 className="text-4xl font-semibold text-center">
+    <section className='mt-16'>
+      <h1 className='text-4xl font-semibold text-center'>
         Monthly Applications
       </h1>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width='100%' height={300}>
         <BarChart data={data} margin={{ top: 50 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey='date' />
           <YAxis allowDecimals={false} />
           <Tooltip />
-          <Bar dataKey="count" fill="#2563eb" barSize={75} />
+          <Bar dataKey='count' fill='#2563eb' barSize={75} />
         </BarChart>
       </ResponsiveContainer>
     </section>

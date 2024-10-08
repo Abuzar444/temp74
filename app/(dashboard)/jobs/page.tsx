@@ -7,7 +7,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { getAllJobsAction } from "@/utils/actions";
-const Jobs: React.FC = async () => {
+const Jobs = async () => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["jobs", "", "all", 1],

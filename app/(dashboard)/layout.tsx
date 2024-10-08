@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='grid lg:grid-cols-5'>
       <div className='hidden lg:block lg:min-h-screen lg:col-span-1'>

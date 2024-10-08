@@ -1,12 +1,12 @@
-import CreateJobForm from '@/components/CreateJobForm';
+import CreateJobForm from "@/components/CreateJobForm";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
-} from '@tanstack/react-query';
-import React from 'react';
+} from "@tanstack/react-query";
+import React from "react";
 
-const AddJob: React.FC = () => {
+const AddJob = () => {
   const queryClient = new QueryClient();
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

@@ -1,33 +1,33 @@
-import React from 'react';
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { AlignLeft } from 'lucide-react';
-import { Button } from './ui/button';
-import links from '@/utils/Links';
-import Link from 'next/link';
-const LinksDropDown: React.FC = () => {
+} from "@/components/ui/dropdown-menu";
+import { AlignLeft } from "lucide-react";
+import { Button } from "./ui/button";
+import links from "@/utils/Links";
+import Link from "next/link";
+const LinksDropDown = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="lg:hidden">
-        <Button variant="outline" size="icon">
+      <DropdownMenuTrigger asChild className='lg:hidden'>
+        <Button variant='outline' size='icon'>
           <AlignLeft />
-          <span className="sr-only">Toggle Links</span>
+          <span className='sr-only'>Toggle Links</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-52 lg:hidden"
-        align="start"
+        className='w-52 lg:hidden'
+        align='start'
         sideOffset={25}
       >
         {links.map((link) => {
           return (
             <DropdownMenuItem key={link.href}>
-              <Link href={link.href} className="flex items-center gap-x-2">
-                {link.icon} <span className="capitalize">{link.label}</span>
+              <Link href={link.href} className='flex items-center gap-x-2'>
+                {link.icon} <span className='capitalize'>{link.label}</span>
               </Link>
             </DropdownMenuItem>
           );

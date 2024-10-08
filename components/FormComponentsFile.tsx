@@ -1,35 +1,32 @@
-import React from 'react';
-import { Control } from 'react-hook-form';
+import React from "react";
+import { Control } from "react-hook-form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from "@/components/ui/select";
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from './ui/input';
+} from "@/components/ui/form";
+import { Input } from "./ui/input";
 type CustomFieldProps = {
   name: string;
   control: Control<any>;
 };
-export const CustomFormField: React.FC<CustomFieldProps> = ({
-  name,
-  control,
-}) => {
+export const CustomFormField = ({ name, control }: CustomFieldProps) => {
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="capitalize">{name}</FormLabel>
+          <FormLabel className='capitalize'>{name}</FormLabel>
           <FormControl>
             <Input {...field} />
           </FormControl>
@@ -60,7 +57,7 @@ export const CustomFormSelect: React.FC<CustomSelectProps> = ({
       render={({ field }) => {
         return (
           <FormItem>
-            <FormLabel className="capitalize">{labelText || name}</FormLabel>
+            <FormLabel className='capitalize'>{labelText || name}</FormLabel>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
                 <SelectTrigger>

@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
 
-const JobInfo: React.FC<{ icon: React.ReactNode; text: string }> = ({
-  icon,
-  text,
-}) => {
+const JobInfo = ({ icon, text }: { icon: React.ReactNode; text: string }) => {
   return (
-    <div className="flex gap-x-2 items-center">
+    <div className='flex gap-x-2 items-center'>
       {icon}
       {text}
     </div>

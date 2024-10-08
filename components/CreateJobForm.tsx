@@ -1,28 +1,28 @@
-'use client';
-import React from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+"use client";
+import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import {
   JobStatus,
   JobMode,
   createAndEditJobSchema,
   CreateAndEditJobType,
-} from '@/utils/types';
-import { Button } from '@/components/ui/button';
-import { Form } from '@/components/ui/form';
-import { CustomFormField, CustomFormSelect } from './FormComponentsFile';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createJobAction } from '@/utils/actions';
-import { useRouter } from 'next/navigation';
-import { useToast } from '@/hooks/use-toast';
+} from "@/utils/types";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { CustomFormField, CustomFormSelect } from "./FormComponentsFile";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createJobAction } from "@/utils/actions";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
-const CreateJobForm: React.FC = () => {
+const CreateJobForm = () => {
   const form = useForm<CreateAndEditJobType>({
     resolver: zodResolver(createAndEditJobSchema),
     defaultValues: {
-      position: '',
-      company: '',
-      location: '',
+      position: "",
+      company: "",
+      location: "",
       status: JobStatus.Pending,
       mode: JobMode.FullTime,
     },
@@ -35,18 +35,18 @@ const CreateJobForm: React.FC = () => {
     onSuccess: (data) => {
       if (!data) {
         toast({
-          description: 'There was an error',
+          description: "There was an error",
         });
       } else {
         toast({
-          description: 'Job Created',
+          description: "Job Created",
         });
       }
-      queryClient.invalidateQueries({ queryKey: ['jobs'] });
-      queryClient.invalidateQueries({ queryKey: ['stats'] });
-      queryClient.invalidateQueries({ queryKey: ['charts'] });
+      queryClient.invalidateQueries({ queryKey: ["jobs"] });
+      queryClient.invalidateQueries({ queryKey: ["stats"] });
+      queryClient.invalidateQueries({ queryKey: ["charts"] });
       form.reset();
-      router.push('/jobs');
+      router.push("/jobs");
     },
   });
   const onSubmit = (values: CreateAndEditJobType) => {
@@ -56,36 +56,36 @@ const CreateJobForm: React.FC = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-muted p-8 rounded"
+        className='bg-muted p-8 rounded'
       >
-        <h2 className="capitalize font-semibold text-4xl mb-6">add job</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
+        <h2 className='capitalize font-semibold text-4xl mb-6'>add job</h2>
+        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start'>
           {/* Position */}
-          <CustomFormField name="position" control={form.control} />
+          <CustomFormField name='position' control={form.control} />
           {/* company */}
-          <CustomFormField name="company" control={form.control} />
+          <CustomFormField name='company' control={form.control} />
           {/* Location */}
-          <CustomFormField name="location" control={form.control} />
+          <CustomFormField name='location' control={form.control} />
           {/* job Status */}
           <CustomFormSelect
-            name="status"
+            name='status'
             control={form.control}
-            labelText="job status"
+            labelText='job status'
             items={Object.values(JobStatus)}
           />
           {/* job mode */}
           <CustomFormSelect
-            name="mode"
+            name='mode'
             control={form.control}
-            labelText="job mode"
+            labelText='job mode'
             items={Object.values(JobMode)}
           />
           <Button
-            type="submit"
-            className="self-end capitalize"
+            type='submit'
+            className='self-end capitalize'
             disabled={isPending}
           >
-            {isPending ? 'loading' : 'create job'}
+            {isPending ? "loading" : "create job"}
           </Button>
         </div>
       </form>
